@@ -4,6 +4,7 @@ resource "aws_iam_service_linked_role" "lakeformation" {
   count = module.this.enabled ? 1 : 0
 
   aws_service_name = "lakeformation.amazonaws.com"
+  custom_suffix    = "-terratest"
 }
 
 module "s3_bucket" {
