@@ -20,7 +20,7 @@ resource "aws_lakeformation_data_lake_settings" "default" {
     for_each = var.database_default_permissions
     content {
       permissions = create_database_default_permissions.value.permissions
-      principal   = create_database_default_permissions.value.principal
+      principal   = try(create_database_default_permissions.value.principal, null)
     }
   }
 
@@ -28,12 +28,14 @@ resource "aws_lakeformation_data_lake_settings" "default" {
     for_each = var.table_default_permissions
     content {
       permissions = create_table_default_permissions.value.permissions
-      principal   = create_table_default_permissions.value.principal
+      principal   = try(create_table_default_permissions.value.principal, null)
     }
   }
 }
 
 resource "aws_lakeformation_lf_tag" "default" {
+  depends_on = [aws_lakeformation_data_lake_settings.default]
+
   for_each = local.enabled ? var.lf_tags : {}
 
   catalog_id = var.catalog_id
@@ -43,6 +45,8 @@ resource "aws_lakeformation_lf_tag" "default" {
 }
 
 resource "aws_lakeformation_resource_lf_tags" "default" {
+  depends_on = [aws_lakeformation_data_lake_settings.default]
+
   for_each = local.enabled ? var.resources : {}
 
   catalog_id = var.catalog_id
@@ -60,8 +64,8 @@ resource "aws_lakeformation_resource_lf_tags" "default" {
     content {
       database_name = each.value.database_name
       name          = each.value.name
-      wildcard      = each.value.wildcard
-      catalog_id    = each.value.catalog_id
+      wildcard      = try(each.value.wildcard, null)
+      catalog_id    = try(each.value.catalog_id, null)
     }
   }
 
@@ -70,11 +74,11 @@ resource "aws_lakeformation_resource_lf_tags" "default" {
     content {
       database_name = each.value.database_name
       name          = each.value.name
-      wildcard      = each.value.wildcard
-      column_names  = each.value.column_names
+      wildcard      = try(each.value.wildcard, null)
+      column_names  = try(each.value.column_names, null)
 
-      catalog_id            = each.value.catalog_id
-      excluded_column_names = each.value.excluded_column_names
+      catalog_id            = try(each.value.catalog_id, null)
+      excluded_column_names = try(each.value.excluded_column_names, null)
     }
   }
 
