@@ -12,6 +12,7 @@ module "s3_bucket" {
 
   acl                = "private"
   versioning_enabled = false
+  force_destroy      = true
 
   context = module.this.context
 }
@@ -31,7 +32,7 @@ module "example" {
   source = "../.."
 
   s3_bucket_arn           = module.s3_bucket.bucket_arn
-  role_arn                = aws_iam_service_linked_role.lakeformation[0].arn
+  role_arn                = try(aws_iam_service_linked_role.lakeformation[0].arn, null)
   admin_arn_list          = [data.aws_caller_identity.current.arn]
   trusted_resource_owners = [data.aws_caller_identity.current.account_id]
 
