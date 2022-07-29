@@ -59,10 +59,6 @@ We literally have [*hundreds of terraform modules*][terraform_modules] that are 
 
 
 
-## Introduction
-
-This is an introduction.
-
 
 ## Security & Compliance [<img src="https://cloudposse.com/wp-content/uploads/2020/11/bridgecrew.svg" width="250" align="right" />](https://bridgecrew.io/)
 
@@ -103,6 +99,37 @@ For automated tests of the complete example using [bats](https://github.com/bats
 (which tests and deploys the example on AWS), see [test](test).
 
 ```hcl
+# So we can assign admin permissions to the current user
+data "aws_caller_identity" "current" {}
+
+# Use this if a service-linked role already exists, otherwise it must be created
+data "aws_iam_role" "lakeformation" {
+  name = "AWSServiceRoleForLakeFormationDataAccess"
+}
+
+# Create a bucket to store Lake Formation data
+module "s3_bucket" {
+  source  = "cloudposse/s3-bucket/aws"
+  # Cloud Posse recommends pinning every module to a specific version, though usually you want to use the current one
+  # version = "x.x.x"
+
+  acl                = "private"
+  versioning_enabled = false
+  force_destroy      = true # Be careful with this!
+
+  context = module.this.context
+}
+
+# Create an Athena database linked to an S3 bucket
+resource "aws_athena_database" "default" {
+  count = module.this.enabled ? 1 : 0
+
+  name   = var.resources.database.name
+  bucket = module.s3_bucket.bucket_id
+
+  force_destroy = true
+}
+
 # Create a standard label resource. See [null-label](https://github.com/cloudposse/terraform-null-label/#terraform-null-label--)
 module "label" {
   source  = "cloudposse/label/null"
@@ -118,7 +145,7 @@ module "lakeformation" {
   # Cloud Posse recommends pinning every module to a specific version
   # version = "x.x.x"
 
-  s3_bucket_arn = <existing s3 bucket>
+  s3_bucket_arn = module.s3_bucket.bucket_arn
 
   lf_tags = {
     left = ["test1", "test2"]
@@ -127,7 +154,7 @@ module "lakeformation" {
 
   resources = {
       database = {
-          name = "example_db_1"
+          name = "example_db_1" # Athena database created above
           tags = {
             left = "test1"
           }
@@ -167,7 +194,7 @@ Available targets:
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.23.0 |
 
 ## Modules
 
