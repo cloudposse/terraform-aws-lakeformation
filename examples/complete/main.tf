@@ -2,9 +2,9 @@ module "s3_bucket" {
   source  = "cloudposse/s3-bucket/aws"
   version = "2.0.3"
 
-  enabled                  = true
-  acl                      = "private"
-  versioning_enabled       = false
+  enabled            = true
+  acl                = "private"
+  versioning_enabled = false
 
   context = module.this.context
 }
