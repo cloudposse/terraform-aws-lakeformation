@@ -1,7 +1,9 @@
 module "example" {
   source = "../.."
 
-  example = coalesce(var.example_input_override, var.example_input)
+  s3_bucket_arn = "foo"
+  lf_tags       = var.lf_tags
+  resources     = var.resources
 
   context = module.this.context
 }

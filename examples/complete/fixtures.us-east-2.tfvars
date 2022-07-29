@@ -8,5 +8,16 @@ stage = "test"
 
 name = "example"
 
-example_input = "Hello, world!"
+lf_tags = {
+  left  = ["test1", "test2"]
+  right = ["test3", "test4"]
+}
 
+resources = {
+  database = {
+    name = "example_db_1"
+    tags = {
+      left = "test1"
+    }
+  }
+}
