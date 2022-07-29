@@ -1,6 +1,6 @@
 module "s3_bucket" {
   source  = "cloudposse/s3-bucket/aws"
-  version = "2.0.3"
+  version = "2.0.0"
 
   enabled            = true
   acl                = "private"
