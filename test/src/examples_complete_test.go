@@ -49,7 +49,7 @@ func TestExamplesComplete(t *testing.T) {
   s3BucketId := terraform.Output(t, terraformOptions, "s3_bucket_id")
 
   // Ensure we get the attribute included in the ID
-  assert.Equal(t, "eg-ue2-test-example-"+randID, id)
+  assert.Equal(t, "eg-ue2-test-example-"+randID, s3BucketId)
 }
 
 func TestExamplesCompleteDisabled(t *testing.T) {
