@@ -19,9 +19,9 @@ module "s3_bucket" {
 resource "aws_athena_database" "default" {
   count = module.this.enabled ? 1 : 0
 
-  name       = var.resources.database.name
-  bucket     = module.s3_bucket.bucket_id
-  
+  name   = var.resources.database.name
+  bucket = module.s3_bucket.bucket_id
+
   force_destroy = true
 }
 
@@ -35,8 +35,8 @@ module "example" {
   admin_arn_list          = [data.aws_caller_identity.current.arn]
   trusted_resource_owners = [data.aws_caller_identity.current.account_id]
 
-  lf_tags        = var.lf_tags
-  resources      = var.resources
+  lf_tags   = var.lf_tags
+  resources = var.resources
 
   database_default_permissions = [
     {
