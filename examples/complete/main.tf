@@ -1,10 +1,8 @@
 data "aws_caller_identity" "current" {}
 
-resource "aws_iam_service_linked_role" "lakeformation" {
-  count = module.this.enabled ? 1 : 0
 
-  aws_service_name = "lakeformation.amazonaws.com"
-  custom_suffix    = "-terratest"
+data "aws_iam_role" "lakeformation" {
+  name = "AWSServiceRoleForLakeFormationDataAccess"
 }
 
 module "s3_bucket" {
@@ -33,7 +31,7 @@ module "example" {
   source = "../.."
 
   s3_bucket_arn           = module.s3_bucket.bucket_arn
-  role_arn                = try(aws_iam_service_linked_role.lakeformation[0].arn, null)
+  role_arn                = try(data.aws_iam_role.lakeformation.arn, null)
   admin_arn_list          = [data.aws_caller_identity.current.arn]
   trusted_resource_owners = [data.aws_caller_identity.current.account_id]
 
