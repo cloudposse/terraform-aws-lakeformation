@@ -34,7 +34,7 @@ variable "database_default_permissions" {
 }
 
 variable "table_default_permissions" {
-  description = "(Optional) Up to three configuration blocks of principal permissions for default create table permissions."
+  description = "Up to three configuration blocks of principal permissions for default create table permissions."
   type        = list(map(any))
   default     = []
 }
