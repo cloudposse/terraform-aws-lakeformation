@@ -16,7 +16,7 @@ variable "catalog_id" {
 }
 
 variable "admin_arn_list" {
-  description = "(Optional) Set of ARNs of AWS Lake Formation principals (IAM users or roles)."
+  description = "Set of ARNs of AWS Lake Formation principals (IAM users or roles)."
   type        = list(string)
   default     = []
 }
