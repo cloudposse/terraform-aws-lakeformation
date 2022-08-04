@@ -1,4 +1,4 @@
-# So we can assign admin permissions to the current user
+# We'll use the current user as Lake Formation admin 
 data "aws_caller_identity" "current" {}
 
 # Use this if a service-linked role already exists, otherwise it must be created
