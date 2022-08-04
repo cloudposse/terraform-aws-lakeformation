@@ -22,7 +22,7 @@ variable "admin_arn_list" {
 }
 
 variable "trusted_resource_owners" {
-  description = "(Optional) List of the resource-owning account IDs that the caller's account can use to share their user access details (user ARNs)."
+  description = "List of the resource-owning account IDs that the caller's account can use to share their user access details (user ARNs)."
   type        = list(string)
   default     = []
 }
