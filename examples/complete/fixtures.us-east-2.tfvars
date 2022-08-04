@@ -8,7 +8,7 @@ stage = "test"
 
 name = "example"
 
-lf_tags = {
+lakeformation_tags = {
   left  = ["test1", "test2"]
   right = ["test3", "test4"]
 }
