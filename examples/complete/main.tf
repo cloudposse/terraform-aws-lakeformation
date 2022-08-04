@@ -28,7 +28,7 @@ resource "aws_athena_database" "default" {
   force_destroy = true
 }
 
-module "example" {
+module "lakeformation" {
   depends_on = [aws_athena_database.default]
 
   source = "../.."
