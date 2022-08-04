@@ -36,7 +36,7 @@ module "lakeformation" {
   admin_arn_list          = [data.aws_caller_identity.current.arn]
   trusted_resource_owners = [data.aws_caller_identity.current.account_id]
 
-  lf_tags   = var.lf_tags
+  lf_tags   = var.lakeformation_tags
   resources = var.resources
 
   database_default_permissions = [
