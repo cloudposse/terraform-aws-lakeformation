@@ -4,7 +4,7 @@ variable "s3_bucket_arn" {
 }
 
 variable "role_arn" {
-  description = "(Optional) Role that has read/write access to the Lake Formation resource. If not provided, the Lake Formation service-linked role must exist and is used."
+  description = "Role that has read/write access to the Lake Formation resource. If not provided, the Lake Formation service-linked role must exist and is used."
   type        = string
   default     = null
 }
