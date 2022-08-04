@@ -5,5 +5,5 @@ output "s3_bucket_id" {
 
 output "lakeformation_tags" {
   description = "List of Lake Formation tags created."
-  value       = module.example.lf_tags
+  value       = module.lakeformation.lf_tags
 }
