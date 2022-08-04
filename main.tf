@@ -34,19 +34,17 @@ resource "aws_lakeformation_data_lake_settings" "default" {
 }
 
 resource "aws_lakeformation_lf_tag" "default" {
-  depends_on = [aws_lakeformation_data_lake_settings.default]
-
   for_each = local.enabled ? var.lf_tags : {}
 
   catalog_id = var.catalog_id
 
   key    = each.key
   values = each.value
+
+  depends_on = [aws_lakeformation_data_lake_settings.default]
 }
 
 resource "aws_lakeformation_resource_lf_tags" "default" {
-  depends_on = [aws_lakeformation_data_lake_settings.default]
-
   for_each = local.enabled ? var.resources : {}
 
   catalog_id = var.catalog_id
@@ -89,4 +87,6 @@ resource "aws_lakeformation_resource_lf_tags" "default" {
       value = lf_tag.value
     }
   }
+
+  depends_on = [aws_lakeformation_data_lake_settings.default]
 }
