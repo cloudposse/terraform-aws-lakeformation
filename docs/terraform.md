@@ -57,7 +57,7 @@
 | <a name="input_table_default_permissions"></a> [table\_default\_permissions](#input\_table\_default\_permissions) | Up to three configuration blocks of principal permissions for default create table permissions. | `list(map(any))` | `[]` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Additional tags (e.g. `{'BusinessUnit': 'XYZ'}`).<br>Neither the tag keys nor the tag values will be modified by this module. | `map(string)` | `{}` | no |
 | <a name="input_tenant"></a> [tenant](#input\_tenant) | ID element \_(Rarely used, not included by default)\_. A customer identifier, indicating who this instance of a resource is for | `string` | `null` | no |
-| <a name="input_trusted_resource_owners"></a> [trusted\_resource\_owners](#input\_trusted\_resource\_owners) | (Optional) List of the resource-owning account IDs that the caller's account can use to share their user access details (user ARNs). | `list(string)` | `[]` | no |
+| <a name="input_trusted_resource_owners"></a> [trusted\_resource\_owners](#input\_trusted\_resource\_owners) | List of the resource-owning account IDs that the caller's account can use to share their user access details (user ARNs). | `list(string)` | `[]` | no |
 
 ## Outputs
 
