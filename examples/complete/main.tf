@@ -29,8 +29,6 @@ resource "aws_athena_database" "default" {
 }
 
 module "example" {
-  depends_on = [aws_athena_database.default]
-
   source = "../.."
 
   s3_bucket_arn           = module.s3_bucket.bucket_arn
@@ -49,4 +47,6 @@ module "example" {
   ]
 
   context = module.this.context
+
+  depends_on = [aws_athena_database.default]
 }
