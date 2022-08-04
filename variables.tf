@@ -28,7 +28,7 @@ variable "trusted_resource_owners" {
 }
 
 variable "database_default_permissions" {
-  description = "(Optional) Up to three configuration blocks of principal permissions for default create database permissions."
+  description = "Up to three configuration blocks of principal permissions for default create database permissions."
   type        = list(any)
   default     = []
 }
