@@ -10,7 +10,7 @@ variable "role_arn" {
 }
 
 variable "catalog_id" {
-  description = "(Optional) Identifier for the Data Catalog. If not provided, the account ID will be used."
+  description = "Identifier for the Data Catalog. If not provided, the account ID will be used."
   type        = string
   default     = null
 }
