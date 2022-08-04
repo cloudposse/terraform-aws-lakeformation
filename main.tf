@@ -20,7 +20,7 @@ resource "aws_lakeformation_data_lake_settings" "default" {
     for_each = var.database_default_permissions
     content {
       permissions = create_database_default_permissions.value.permissions
-      principal   = try(create_database_default_permissions.value.principal, null)
+      principal   = create_database_default_permissions.value.principal
     }
   }
 
@@ -28,7 +28,7 @@ resource "aws_lakeformation_data_lake_settings" "default" {
     for_each = var.table_default_permissions
     content {
       permissions = create_table_default_permissions.value.permissions
-      principal   = try(create_table_default_permissions.value.principal, null)
+      principal   = create_table_default_permissions.value.principal
     }
   }
 }
