@@ -28,7 +28,7 @@ resource "aws_athena_database" "default" {
   force_destroy = true
 }
 
-module "example" {
+module "lakeformation" {
   source = "../.."
 
   s3_bucket_arn           = module.s3_bucket.bucket_arn
