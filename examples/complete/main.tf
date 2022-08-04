@@ -32,7 +32,7 @@ module "lakeformation" {
   source = "../.."
 
   s3_bucket_arn           = module.s3_bucket.bucket_arn
-  role_arn                = try(data.aws_iam_role.lakeformation.arn, null)
+  role_arn                = data.aws_iam_role.lakeformation.arn
   admin_arn_list          = [data.aws_caller_identity.current.arn]
   trusted_resource_owners = [data.aws_caller_identity.current.account_id]
 
