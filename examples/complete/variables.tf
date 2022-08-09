@@ -2,13 +2,14 @@ variable "region" {
   type = string
 }
 
-variable "example_input" {
-  type        = string
-  description = "The value which will be passed to the example module"
+variable "lakeformation_tags" {
+  description = "A map of key-value pairs to be used as Lake Formation tags."
+  type        = map(list(string))
+  default     = {}
 }
 
-variable "example_input_override" {
-  type        = string
-  default     = null
-  description = "Override for `example_input`"
+variable "resources" {
+  description = "A map of Lake Formation resources to create, with related attributes."
+  type        = map(any)
+  default     = {}
 }

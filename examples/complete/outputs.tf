@@ -1,14 +1,9 @@
-output "id" {
-  description = "ID of the created example"
-  value       = module.example.id
+output "s3_bucket_id" {
+  description = "Name of S3 bucket created to store data."
+  value       = module.s3_bucket.bucket_id
 }
 
-output "example" {
-  description = "Output \"example\" from example module"
-  value       = module.example.example
-}
-
-output "random" {
-  description = "Output \"random\" from example module"
-  value       = module.example.random
+output "lakeformation_tags" {
+  description = "List of Lake Formation tags created."
+  value       = module.lakeformation.lf_tags
 }
