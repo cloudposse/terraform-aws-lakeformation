@@ -2,7 +2,7 @@
 
 <!-- markdownlint-disable -->
 # terraform-aws-lakeformation <a href="https://cpco.io/homepage?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-lakeformation&utm_content="><img align="right" src="https://cloudposse.com/logo-300x69.svg" width="150" /></a>
-<a href="https://github.com/cloudposse/terraform-aws-lakeformation/releases/latest"><img src="https://img.shields.io/github/release/cloudposse/terraform-aws-lakeformation.svg" alt="Latest Release"/></a><a href="https://slack.cloudposse.com"><img src="https://slack.cloudposse.com/badge.svg" alt="Slack Community"/></a><a href="https://ask.sweetops.com/"><img src="https://img.shields.io/discourse/https/ask.sweetops.com/posts.svg" alt="Discourse Forum"/></a>
+<a href="https://github.com/cloudposse/terraform-aws-lakeformation/releases/latest"><img src="https://img.shields.io/github/release/cloudposse/terraform-aws-lakeformation.svg?style=for-the-badge" alt="Latest Release"/></a><a href="https://github.com/cloudposse/terraform-aws-lakeformation/commits"><img src="https://img.shields.io/github/last-commit/cloudposse/terraform-aws-lakeformation.svg?style=for-the-badge" alt="Last Updated"/></a><a href="https://slack.cloudposse.com"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"/></a>
 <!-- markdownlint-restore -->
 
 <!--
