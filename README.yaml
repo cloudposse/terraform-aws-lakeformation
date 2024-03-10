@@ -19,7 +19,7 @@ copyrights:
     year: "2021"
 
 # Canonical GitHub repo
-github_repo:
+github_repo: cloudposse/terraform-aws-lakeformation
 
 # Badges to display
 badges:
